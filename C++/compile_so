@@ -1,0 +1,1 @@
+gcc -Wall -O3 -fPIC -shared -I/opt/ceemple/include/ -Wl,-soname=libChannelBasis.so.1 ChannelBasis.cpp -L/opt/ceemple/lib -lopencv_core -o libChannelBasis.so.1.0.0

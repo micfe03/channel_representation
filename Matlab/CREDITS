@@ -1,0 +1,36 @@
+
+
+  Unified channel encoding toolbox v1.0
+  -------------------------------------
+
+    This toolbox is a restructuring and unification of pieces of code 
+    produced by several authors. It would not be possible to list one
+    author for every source file. The whole toolbox should instead be
+    seen as a group effort.
+
+    Most of the original code upon which this toolbox is based can be 
+    found in the 'semi_obsolete' directory. It is labelled semi_obsolete
+    because it still contains some functions that are not inlcuded in
+    the general class structure - e.g. gaussinan channels and ND-decoding.
+
+    Here is an attempt to give proper credits for various pieces
+    of the code:
+
+    cos2 encoding and decoding: 
+      Per-Erik Forssen 
+        (Also released as part of "Channel Learning Architecture toolbox"
+         by Per-Erik Forssen, Gösta Granlund, Björn Johansson)
+
+    B-spline encoding and decoding:
+      Michael Felsberg and Per-Erik Forssen
+
+    P-channel encoding and decoding:
+      Michael Felsberg and Erik Jonsson
+
+    Fast piecewise polynomial implementation:
+      Michael Felsberg, Johan Hedborg, Erik Jonsson
+
+    Class structure, editing and unification:
+      Erik Jonsson
+
+    [2004-2007]
