@@ -1,23 +1,37 @@
 # channel_representation
 
 This repository contains code for using channel representations. Supported languages are
+
 -Python
+
 -C++ (including Python-wrapper)
+
 -Matlab
 
 The code has been written by former and current members of the Computer Vision Laboratory at Linköping University http://www.cvl.isy.liu.se/:
+
 Michael Felsberg
+
 Per-Erik Forssen
+
 Gösta Granlund
+
 Björn Johansson
+
 Johan Hedborg
+
 Erik Jonsson (now Landolsi)
+
 Fredrik Larsson
+
 Kristoffer Öfjäll
 
 If you want to use the software in your research, please cite the following papers:
+
 http://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A539757&dswid=9295
+
 http://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A491401&dswid=-9644
+
 https://www.morganclaypool.com/doi/10.2200/S00851ED1V01Y201804COV016
 
 The code for the different platforms is in different states and under continuous development. 
