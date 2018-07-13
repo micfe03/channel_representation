@@ -52,13 +52,11 @@ if __name__ == '__main__':
     print("Encode and decode $y$ as cos2 channel")
     cCV = cp.ChannelVector(CCBo)
     cCV.addSample(yo)
-#    print("Vector is " + str(cCV))
     cCVi = cp.ChannelVector(CCB)
     
     print("Encode and decode $x$ as cos2 channel")
     cBV = cp.ChannelVector(BCBo)
     cBV.addSample(xo)
-#    print("Vector is " + str(cBV))
     cBVi = cp.ChannelVector(BCB)
 
     plt.close(1)
@@ -79,14 +77,11 @@ if __name__ == '__main__':
     ax3 = plt.subplot(gs[0,1])
     f = (nCCB-dN)/(1.+np.exp(rBMax*2./stp-xi*4./stp))
     ax3.plot(xi,f)
-#    cbCV = cp.ChannelVector(CBCB)
-#    DM = np.array([xi.transpose(), f.transpose()]).transpose()
-#    cbCV.addSample(DM)
+    cbCV = cp.ChannelVector(CBCB)
+    DM = np.array([[xi.transpose(), f.transpose()]]).transpose((2,0,1))
+    cbCV.addSample(DM)
+    cbCV = np.sum(cbCV,0).reshape(nBCB,nCCB).transpose()
     xv, yv = np.meshgrid(np.linspace(-stp/2.,rBMax+stp/2.,nBCB),np.linspace(-1./2.,rCMax+1./2.,nCCB))
-#    ax3.scatter(xv.transpose().flatten(),yv.transpose().flatten(),cbCV)
-    cBVi.addSample(xi)
-    cCVi.addSample(f)
-    cbCV=cCVi.transpose()@cBVi
     plt.scatter(xv,yv,4*cbCV**2)
     ax3.set_xlim([xo[0],xo[-1]])
     ax3.set_ylim([yo[0],yo[-1]])
@@ -97,4 +92,3 @@ if __name__ == '__main__':
     ax3.grid()
     fig.show()
     
-#    plt.grid(clip_box=mtrans.Bbox([[rBMin,rCMin],[rBMax,rCMax]]))

@@ -1,6 +1,7 @@
 import numpy as np
 import numpy.random as rnd
-from scipy import misc, ndimage
+from scipy import ndimage
+import imageio
 from matplotlib import pyplot as plt
 import chanpy as cp
 
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     cbCV = cp.ChannelVector(CBCB)
     cbCV.addSample(xy[0:1,0:1])
     print("Vector is " + str(cbCV))
-    print("Decoding gives " + str(cbCV.decode()) + " compared to " + str(xyr[0:1,0:1]))
+    print("Decoding gives " + str(cbCV.decode()) + " compared to " + str(xy[0:1,0:1]))
 
     print("Add " + str(xyr[0:1,1:2]) + " as combined channel and decode")
     cbCV.addSample(xyr[0:1,1:2])
@@ -108,8 +109,8 @@ if __name__ == '__main__':
     print("Average the two channels gives " + str(cbCVsum))
     print("Decoding gives " + str(cbCVsum.decode(2)) + " compared to " + str(xyr[0:1,0:2]))
 
-    image = misc.imread("house_orig.png",flatten=True)
-    image = image[0:248,:]
+    image = imageio.imread("4.1.07.tiff")
+    image = image[:,:,0]
     plt.imshow(image,'gray')
     plt.title("Original Image")
     plt.colorbar()
@@ -120,7 +121,6 @@ if __name__ == '__main__':
     tmpImg = ndimage.filters.gaussian_filter(cCVB.channelImage(), 1.5)
     cCVB.channelImage()[:] = tmpImg
     fImage2 = cCVB.decode(2)
-#    plt.imshow(cv2.convertScaleAbs(fImage2[:,:,0].squeeze()))
     print(fImage2.shape)
     plt.figure()
     plt.imshow(fImage2[:,:,0].squeeze(),'gray')

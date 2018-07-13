@@ -248,7 +248,7 @@ class CombinedChannelBasis(ChannelBasis):
             #tmpOP[:] = np.kron(tmpyChannel,tmpxChannel)
             #tmpxChannel.resize(sizes,refcheck=0)
             #tmpxChannel[:] = tmpOP.copy()
-            tmpxChannel=np.kron(tmpyChannel,tmpxChannel)
+            tmpxChannel=np.kron(tmpxChannel,tmpyChannel)
         tmpxChannel.setChannelBasis(self)
         tmpxChannel.normalize()
         return tmpxChannel
@@ -261,7 +261,8 @@ class CombinedChannelBasis(ChannelBasis):
         for mode in range(nrModes):
             nrXChannels = chCoeff.shape[0]
             xChannel = chCoeff.copy()
-            for k in range(len(self.__chBasisVector__)-1,-1,-1):
+#            for k in range(len(self.__chBasisVector__)-1,-1,-1):
+            for k in range(0,len(self.__chBasisVector__)):
                 nrYChannels = self.__chBasisVector__[k].getNrChannels()
                 nrXChannels //= nrYChannels
                 # xChannel = xChannel.reshape((nrYChannels,nrXChannels))
@@ -271,7 +272,8 @@ class CombinedChannelBasis(ChannelBasis):
                     for xCi in range(l*nrXChannels, (l+1)*nrXChannels):
                         tmpCoeff[l] += xChannel[xCi]
                 # 
-                if k==len(self.__chBasisVector__)-1:
+#                if k==len(self.__chBasisVector__)-1:
+                if k==0:
                     pRes = self.__chBasisVector__[k].decode(tmpCoeff,mode+1)
                     res[mode,k] = pRes[0,2*mode]
                     tmpCoeff = self.__chBasisVector__[k].encode(pRes[0,2*mode])[0,:]
